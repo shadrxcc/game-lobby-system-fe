@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://game-lobby-system-be-production.up.railway.app/";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
