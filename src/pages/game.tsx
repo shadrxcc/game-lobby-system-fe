@@ -107,7 +107,13 @@
 // export default GamePage;
 
 import Button from "@/components/shared/button";
-import { getResults, pickNumber, sessionStatus, joinSession, leaveSession } from "@/services/api/session";
+import {
+  getResults,
+  pickNumber,
+  sessionStatus,
+  joinSession,
+  leaveSession,
+} from "@/services/api/session";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -163,9 +169,6 @@ const GamePage: React.FC = () => {
   useEffect(() => {
     if (data && !data.hasJoined && data.isActive) {
       joinSessionMutation();
-    } else if (data && !data.isActive) {
-      navigate("/lobby");
-      toast.info("Session has ended");
     }
   }, [data, joinSessionMutation]);
 
@@ -194,7 +197,7 @@ const GamePage: React.FC = () => {
           <>
             <p>Time Left: {data?.timeLeft} seconds</p>
             <p>Total Players: {data?.players}</p>
-         
+
             {data?.hasPicked && (
               <p className="text-sm text-green-600">Waiting for results...</p>
             )}
@@ -243,7 +246,9 @@ const GamePage: React.FC = () => {
         </div>
       )}
 
-      <Button className="mt-4" onClick={() => leaveSessionMutation()}>Leave Session</Button>
+      <Button className="mt-4" onClick={() => leaveSessionMutation()}>
+        Leave Session
+      </Button>
     </div>
   );
 };
