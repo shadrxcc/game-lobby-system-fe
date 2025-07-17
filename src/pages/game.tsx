@@ -163,6 +163,9 @@ const GamePage: React.FC = () => {
   useEffect(() => {
     if (data && !data.hasJoined && data.isActive) {
       joinSessionMutation();
+    } else if (data && !data.isActive) {
+      navigate("/lobby");
+      toast.info("Session has ended");
     }
   }, [data, joinSessionMutation]);
 

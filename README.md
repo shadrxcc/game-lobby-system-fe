@@ -1,69 +1,116 @@
-# React + TypeScript + Vite
+# Game Lobby System FE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Approach
 
-Currently, two official plugins are available:
+This project implements a real-time game lobby system where users can join sessions, pick numbers, and compete to win. The backend is built with Node.js, Express, TypeScript, and MongoDB, while the frontend (this repo) is built with React and TypeScript. The system uses JWT-based authentication and polling for real-time updates. Sessions auto-cycle, and a leaderboard tracks top players.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo
 
-## Expanding the ESLint configuration
+[Live Demo](https://game-lobby-system-fe.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Repository
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+[FE GitHub Repository](https://github.com/shadrxcc/game-lobby-system-fe)
+[BE GitHub Repository](https://github.com/shadrxcc/game-lobby-system-be)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Setup Instructions
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository
+2. Run `yarn install` or `npm install`
+3. Copy `.env.example` to `.env` and fill in your environment variables
+4. Start the development server with `yarn dev` or `npm run dev`
+
+
+## 🎮 Game Overview
+
+- **Session Duration**: 20 seconds per game
+- **Number Range**: Players pick numbers 1-10 with a random number selected at session end
+- **Auto-restart**: Sessions automatically restart with 10 second breaks
+- **Leaderboard**: Top 10 players are tracked by wins
+
+## 🏗️ Architecture
+
+### Tech Stack
+- **Backend**: Node.js + Express + TypeScript
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: JWT tokens
+- **Real-time**: 1 sec polling-based status updates
+
+### Key Features
+- ✅ User authentication (username-based)
+- ✅ Real-time session management
+- ✅ Automatic session cycling
+- ✅ Leaderboard system
+
+## 🔄 Game Flow
+
+1. **User Registration/Login**
+   - User provides username
+   - Receives JWT token for authentication
+
+2. **Session Joining**
+   - User joins active session via `/session/join` if session time still running
+   - No number picking at this stage
+
+
+3. **Number Selection**
+   - User navigates to game page on successfully joining the session
+   - Picks number 1-10 with `/session/pick`
+   - Waits for session to end to see result
+   - Check for when user navigates to game page manually, if a session is active, they auto join, else get redirected back to the lobby.
+
+4. **Results & Auto-restart**
+   - Session ends after 20 seconds
+   - Results are displayed during 10-second break
+   - New session automatically starts
+   - Users auto-rejoin new session 
+
+## 🗄️ Database Schema
+
+### Users Collection
+```json
+{
+  "username":string",
+ wins": "number"
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Sessions Collection
+```json
+{
+  "sessionId": string",
+  startedAt": date",
+endedAt": date,players: [[object Object]
+ username:string,  pick: "number"
+    }
+  ],
+  winningNumber": "number,winners: [[object Object]
+ username:string,  pick: "number"
+    }
+  ]
+}
 ```
+
+## ⚙️ Setup Instructions
+
+### Prerequisites
+- Node.js (v16+)
+- MongoDB (local or Atlas)
+- Yarn or npm
+
+### Installation
+```bash
+# Install dependencies
+yarn install
+
+# Set environment variables
+cp .env.example .env
+# Add your MONGODB_URI and JWT_SECRET
+
+# Start development server
+yarn dev
+```
+
+## 📝 License
+
+MIT License - feel free to use this project for learning and development. 
