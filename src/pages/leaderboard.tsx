@@ -56,7 +56,12 @@ const LeaderboardPage = () => {
           <TableBody>
             {data?.leaderboard.map((player) => (
               <TableRow key={player.username}>
-                <TableCell className="font-medium">{player.username}</TableCell>
+                <TableCell className="font-medium">
+                    <div className="flex items-center gap-2">
+                        <img src="/avatar.png" alt="avatar" className="size-7 rounded-full" />
+                        <p className="text-white text-sm">{player.username}</p>
+                    </div>
+                </TableCell>
                 <TableCell>{player.wins}</TableCell>
               </TableRow>
             ))}
