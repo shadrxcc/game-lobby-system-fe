@@ -22,7 +22,7 @@ const Header = () => {
             <p className="text-white text-xs">Leaderboard</p>
           </Link>
           <Button
-            className="!bg-transparent !text-white hover:!text-primary"
+            className="!bg-transparent !text-white !p-0 hover:!text-primary"
             onClick={logout}
           >
             <LogOut className="size-5" />
@@ -30,7 +30,7 @@ const Header = () => {
           </Button>
         </div>
 
-        <div className="flex sm:hidden items-center gap-3">
+        <div className="flex sm:hidden items-center gap-4">
           <Link
             to="/lobby/leaderboard"
             className="flex items-center"
@@ -39,7 +39,7 @@ const Header = () => {
             <Trophy className="size-6 text-white" />
           </Link>
           <Button
-            className="!bg-transparent flex !text-white hover:!text-primary p-2"
+            className="!bg-transparent flex !text-white hover:!text-primary !p-0"
             onClick={logout}
             title="Logout"
           >

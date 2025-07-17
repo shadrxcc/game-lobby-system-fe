@@ -26,10 +26,10 @@ const LobbyPage: React.FC = () => {
   });
 
   return (
-    <div className="flex flex-col gap-y-4 items-center justify-center min-h-screen text-3xl">
-      <h1>Current Game Session</h1>
-      <div className="flex flex-col items-center gap-4">
-        <h2 className="text-lg font-bold">
+    <div className="flex flex-col gap-y-4 items-center justify-center min-h-screen px-2 sm:px-0 text-xl sm:text-3xl">
+      <h1 className="font-bold text-lg sm:text-2xl text-center">Current Game Session</h1>
+      <div className="flex flex-col items-center gap-4 w-full max-w-xs sm:max-w-md bg-white/10 rounded-xl p-4 sm:p-8 shadow-glass">
+        <h2 className="text-base sm:text-lg font-bold text-center">
           Session Status:{" "}
           {session?.isActive ? (
             <span className="text-green-500">Active</span>
@@ -40,25 +40,25 @@ const LobbyPage: React.FC = () => {
 
         {session?.isActive && (
           <>
-            <p className="text-lg">Time Left: {session.timeLeft} seconds</p>
+            <p className="text-base sm:text-lg text-center">Time Left: {session.timeLeft} seconds</p>
 
             <Button
               loading={isPending}
-              className="w-full"
+              className="w-full sm:w-auto text-base sm:text-lg"
               onClick={() => joinSessionMutation()}
               disabled={isPending}
             >
               Join Session
             </Button>
 
-            <p className="text-lg">
+            <p className="text-base sm:text-lg text-center">
               {session.playersCount} player(s) in the session...
             </p>
           </>
         )}
 
         {!session?.isActive && (
-          <p className="text-lg text-gray-600">
+          <p className="text-base sm:text-lg text-gray-600 text-center">
             Waiting for next session to start...
           </p>
         )}
