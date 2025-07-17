@@ -42,9 +42,9 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex mx-auto items-center justify-center bg-gradient-to-br from-primary to-accent-lime relative overflow-hidden">
-      <div className="mx-auto rounded-2xl p-8 w-full max-w-md flex gap-y-3.5 flex-col items-center bg-white/20 backdrop-blur-md shadow-glass">
-        <h1 className="text-3xl text-center font-bold mb-2 text-white">
+    <div className="min-h-screen flex mx-auto px-2 sm:px-4 items-center justify-center bg-gradient-to-br from-primary to-accent-lime relative overflow-hidden">
+      <div className="mx-auto rounded-2xl p-4 sm:p-8 w-full max-w-xs sm:max-w-md flex gap-y-3.5 flex-col items-center bg-white/20 backdrop-blur-md shadow-glass">
+        <h1 className="text-2xl sm:text-3xl text-center font-bold mb-2 text-white">
           Register to CrckdSheddy's Lobby!
         </h1>
 
@@ -57,7 +57,7 @@ const Register = () => {
         />
 
         <Button
-          className="w-full"
+          className="w-full text-base sm:text-lg"
           onClick={handleSubmit(onSubmit)}
           loading={isPending}
           disabled={!isValid}
@@ -65,7 +65,7 @@ const Register = () => {
           Register
         </Button>
 
-        <p className="text-white text-sm">
+        <p className="text-white text-xs sm:text-sm text-center">
           Already have an account?{" "}
           <Link to="/login" className="text-accent-lime">
             Login
