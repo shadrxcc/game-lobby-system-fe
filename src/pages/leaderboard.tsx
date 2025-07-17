@@ -41,7 +41,7 @@ const LeaderboardPage = () => {
   });
 
   return (
-    <div className="flex flex-col items-center gap-y-6 justify-center min-h-screen text-3xl">
+    <div className="flex flex-col items-center p-4 gap-y-6 justify-center min-h-screen text-3xl">
       <h1 className="text-2xl font-bold">Leaderboard</h1>
       {isLoading ? (
         <LeaderboardSkeleton />
