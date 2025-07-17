@@ -22,7 +22,7 @@ const Login = () => {
       navigate("/lobby");
     },
     onError: (error: { error: string }) => {
-      toast.error(error.error);
+      toast.error(error.error || "Something went wrong");
     },
   });
 

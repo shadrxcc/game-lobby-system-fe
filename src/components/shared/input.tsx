@@ -24,8 +24,8 @@ const Input: React.FC<InputProps> = ({
       )}
       <div className="relative flex items-center">
         <InputComponent
-          className={`w-full rounded-md px-4 py-2 bg-white/30 text-white placeholder:text-white/50 border transition-all duration-200 focus:ring-0 focus:border-primary/60 outline-none ${
-            error ? 'border-red-500' : 'border-transparent'
+          className={`w-full rounded-md px-4 py-4 h-10 text-white placeholder:text-white/50 border transition-all duration-200 focus:ring-0 focus:border-primary/60 outline-none ${
+            error ? 'border-red-500' : 'border-white'
           } ${className}`}
           {...props}
         />
