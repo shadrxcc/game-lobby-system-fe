@@ -65,32 +65,6 @@ This project implements a real-time game lobby system where users can join sessi
    - New session automatically starts
    - Users auto-rejoin new session 
 
-## 🗄️ Database Schema
-
-### Users Collection
-```json
-{
-  "username":string",
- wins": "number"
-}
-```
-
-### Sessions Collection
-```json
-{
-  "sessionId": string",
-  startedAt": date",
-endedAt": date,players: [[object Object]
- username:string,  pick: "number"
-    }
-  ],
-  winningNumber": "number,winners: [[object Object]
- username:string,  pick: "number"
-    }
-  ]
-}
-```
-
 ## ⚙️ Setup Instructions
 
 ### Prerequisites
