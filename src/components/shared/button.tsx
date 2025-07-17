@@ -46,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`rounded-md text-sm cursor-pointer font-bold px-6 h-10 flex items-center justify-center gap-2 py-3 transition-all duration-200 focus:outline-none focus:ring-none disabled:opacity-50 disabled:cursor-not-allowed ${
+      className={`rounded-md text-xs cursor-pointer font-bold px-6 h-10 flex items-center justify-center gap-2 py-3 transition-all duration-200 focus:outline-none focus:ring-none disabled:opacity-50 disabled:cursor-not-allowed ${
         variantClasses[variant]
       } ${className}`}
       {...props}

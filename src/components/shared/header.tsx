@@ -1,4 +1,4 @@
-import { LogOut } from "lucide-react";
+import { LogOut, Trophy } from "lucide-react";
 import Button from "./button";
 import { useAuth } from "@/context/auth.context";
 import { Link } from "react-router-dom";
@@ -10,30 +10,40 @@ const Header = () => {
     <div className="w-full flex justify-center">
       <nav className="flex fixed max-w-7xl w-full justify-between items-center p-4">
         <Link to="/lobby">
-          <h1 className="text-2xl !text-white font-bold">Lobby</h1>
+          <img src="/avatar.png" alt="avatar" className="size-8 rounded-full" />
         </Link>
 
-        <div className="flex items-center gap-2">
-          <img src="/avatar.png" alt="avatar" className="size-7 rounded-full" />
-          <p className="text-white sm:block hidden text-sm">{user?.username}</p>
+        <div className="sm:flex hidden items-center gap-2">
+          <p className="text-white text-center text-xs">{user?.username}</p>
         </div>
-        <div className="flex items-center gap-4">
-          <Link to="/lobby/leaderboard">
-            <p className="text-white text-sm">Leaderboard</p>
+        <div className="sm:flex hidden items-center gap-4">
+          <Link to="/lobby/leaderboard" className="flex items-center gap-1">
+            <Trophy className="size-5 text-white" />
+            <p className="text-white text-xs">Leaderboard</p>
           </Link>
           <Button
-            className="!bg-transparent sm:flex hidden !text-white hover:!text-primary"
+            className="!bg-transparent !text-white hover:!text-primary"
             onClick={logout}
           >
             <LogOut className="size-5" />
             Logout
           </Button>
+        </div>
 
-          <Button
-            className="!bg-transparent sm:hidden flex !text-white hover:!text-primary"
-            onClick={logout}
+        <div className="flex sm:hidden items-center gap-3">
+          <Link
+            to="/lobby/leaderboard"
+            className="flex items-center"
+            title="Leaderboard"
           >
-            <LogOut className="size-5" />
+            <Trophy className="size-6 text-white" />
+          </Link>
+          <Button
+            className="!bg-transparent flex !text-white hover:!text-primary p-2"
+            onClick={logout}
+            title="Logout"
+          >
+            <LogOut className="size-6" />
           </Button>
         </div>
       </nav>
