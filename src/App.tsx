@@ -11,6 +11,7 @@ import Login from "./pages/login";
 import LobbyPage from "./pages/lobby";
 import GamePage from "./pages/game";
 import Register from "./pages/register";
+import LeaderboardPage from "./pages/leaderboard";
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Route path="/lobby" element={<ProtectedRoute />}>
             <Route index element={<LobbyPage />} />
             <Route path="game" element={<GamePage />} />
+            <Route path="leaderboard" element={<LeaderboardPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>

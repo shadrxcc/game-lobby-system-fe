@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { toast } from 'sonner';
 
 interface User {
   username: string;
@@ -41,6 +42,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    toast.success("Logged out successfully");
     localStorage.removeItem('token');
     localStorage.removeItem('username');
   };
