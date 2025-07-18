@@ -11,7 +11,7 @@ const LobbyPage: React.FC = () => {
   const { data: session } = useQuery({
     queryKey: ["session"],
     queryFn: getSession,
-    refetchInterval: 1000,
+    // refetchInterval: 1000,
   });
 
   const { mutate: joinSessionMutation, isPending } = useMutation({
@@ -43,7 +43,7 @@ const LobbyPage: React.FC = () => {
             <p className="text-base sm:text-lg text-center">Time Left: {session.timeLeft} seconds</p>
 
             <Button
-              loading={isPending}
+              isLoading={isPending}
               className="w-full sm:w-auto text-base sm:text-lg"
               onClick={() => joinSessionMutation()}
               disabled={isPending}
