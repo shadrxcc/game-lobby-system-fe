@@ -95,7 +95,7 @@ const Register = () => {
                   errorMessage={errors.username?.message}
                   placeholder="Enter your username"
                   maxLength={12}
-                  {...register("username")}
+                  {...registerForm("username")}
                 />
               </div>
 
