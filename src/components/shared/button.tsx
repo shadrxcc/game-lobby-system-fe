@@ -2,7 +2,7 @@ import type React from "react";
 import { forwardRef } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "danger" | "success" | "warning" | "neon"
+  variant?: "primary" | "secondary" | "danger" | "success" | "warning" | "neon" | "ghost"
   size?: "sm" | "md" | "lg" | "xl"
   isLoading?: boolean
   glowEffect?: boolean
@@ -36,6 +36,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       warning:
         "bg-gradient-to-r from-yellow-500 to-orange-400 text-black border-white hover:from-yellow-600 hover:to-orange-500",
       neon: "bg-black text-cyan-400 border-cyan-400 hover:text-pink-400 hover:border-pink-400",
+      ghost: "bg-transparent p-0 w-fit"
     }
 
     const sizes = {
@@ -52,6 +53,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       success: glowEffect ? "shadow-[0_0_30px_rgba(34,197,94,0.6)] hover:shadow-[0_0_40px_rgba(34,211,238,0.8)]" : "",
       warning: glowEffect ? "shadow-[0_0_30px_rgba(250,204,21,0.6)] hover:shadow-[0_0_40px_rgba(251,146,60,0.8)]" : "",
       neon: glowEffect ? "shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(236,72,153,0.6)]" : "",
+      ghost: ""
     }
 
     const hoverEffects = "hover:scale-105 active:scale-95"
