@@ -52,7 +52,6 @@ This project implements a real-time game lobby system where users can join sessi
    - User joins active session via `/session/join` if session time still running
    - No number picking at this stage
 
-
 3. **Number Selection**
    - User navigates to game page on successfully joining the session
    - Picks number 1-10 with `/session/pick`
